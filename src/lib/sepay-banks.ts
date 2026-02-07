@@ -36,6 +36,11 @@ export const SEPAY_BANKS: { code: string; short_name: string; name: string }[] =
   { code: "COOPBANK", short_name: "COOPBANK", name: "COOPBANK - Ngân hàng Hợp tác xã Việt Nam" },
 ];
 
+/** URL logo ngân hàng (MoMo CDN). Dùng code làm tên file, một số ngân hàng có thể không có ảnh. */
+export function getBankLogoUrl(code: string): string {
+  return `https://img.mservice.com.vn/momo_app_v2/img/${code}.png`;
+}
+
 export const SEPAY_QR_BASE = "https://qr.sepay.vn/img";
 
 /** Tạo URL ảnh QR VietQR (số tiền theo VND). */

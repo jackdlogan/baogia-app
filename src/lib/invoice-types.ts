@@ -42,10 +42,14 @@ export interface InvoiceData {
   items: InvoiceItem[];
 }
 
+/** Static dates for SSR/hydration; real dates applied on client in loadStored(). */
+const STATIC_DATE = "2025-01-01";
+const STATIC_DUE_DATE = "2025-01-15";
+
 export const defaultInvoiceData: InvoiceData = {
   invoiceNumber: "BG-001",
-  invoiceDate: new Date().toISOString().slice(0, 10),
-  dueDate: new Date(Date.now() + 14 * 86400000).toISOString().slice(0, 10),
+  invoiceDate: STATIC_DATE,
+  dueDate: STATIC_DUE_DATE,
   companyName: "Công ty ABC",
   companyAddress: "123 Đường XYZ, Quận 1, TP.HCM",
   companyPhone: "028 1234 5678",

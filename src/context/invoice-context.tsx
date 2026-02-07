@@ -34,7 +34,12 @@ function loadStored(): InvoiceData {
   if (typeof window === "undefined") return defaultInvoiceData;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return defaultInvoiceData;
+    if (!raw) {
+      // No stored data: use today's date on client so UI shows current dates (SSR used static dates for hydration)
+      const today = new Date().toISOString().slice(0, 10);
+      const due = new Date(Date.now() + 14 * 86400000).toISOString().slice(0, 10);
+      return { ...defaultInvoiceData, invoiceDate: today, dueDate: due };
+    }
     const parsed = JSON.parse(raw) as Partial<InvoiceData>;
     if (parsed?.items?.length) {
       return { ...defaultInvoiceData, ...parsed, items: parsed.items } as InvoiceData;
