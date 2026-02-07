@@ -6,6 +6,7 @@ import { formatCurrency } from "@/lib/invoice-utils";
 import { DatePickerField } from "./DatePickerField";
 import { ItemField } from "./InvoiceFields";
 import { InlineEditable } from "./InlineEditable";
+import { PaymentQrSection } from "./PaymentQrSection";
 
 const BORDER = "rgb(51 51 51)";
 
@@ -269,6 +270,9 @@ export function TemplateClassic() {
               placeholder="Email"
             />
           </div>
+        </div>
+        <div className="mt-4">
+          <PaymentQrSection />
         </div>
       </div>
 

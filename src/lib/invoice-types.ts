@@ -33,6 +33,12 @@ export interface InvoiceData {
   companyWebsite?: string;
   /** Optional: tax / GST ID */
   taxId?: string;
+  /** SePay VietQR: mã ngân hàng (short_name từ qr.sepay.vn) */
+  paymentQrBankCode?: string;
+  /** SePay VietQR: số tài khoản */
+  paymentQrAccount?: string;
+  /** SePay VietQR: nội dung chuyển khoản (chữ, số, không dấu) */
+  paymentQrDescription?: string;
   items: InvoiceItem[];
 }
 
@@ -58,6 +64,9 @@ export const defaultInvoiceData: InvoiceData = {
   projectName: "",
   companyWebsite: "",
   taxId: "",
+  paymentQrBankCode: "",
+  paymentQrAccount: "",
+  paymentQrDescription: "",
   items: [
     { description: "Sản phẩm / Dịch vụ mẫu", quantity: 1, unit: "Cái", unitPrice: 1000000 },
     { description: "Hạng mục thứ hai", quantity: 2, unit: "Cái", unitPrice: 500000 },

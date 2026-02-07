@@ -6,6 +6,7 @@ import { formatCurrency } from "@/lib/invoice-utils";
 import { DatePickerField } from "./DatePickerField";
 import { ItemField } from "./InvoiceFields";
 import { InlineEditable } from "./InlineEditable";
+import { PaymentQrSection } from "./PaymentQrSection";
 
 export function TemplateGrey() {
   const { data, getSubtotal, getGrandTotal, removeItem, updateField, addItem } =
@@ -161,6 +162,9 @@ export function TemplateGrey() {
           <span>Tổng cộng ({currencyDisplay === "usd" ? "USD" : "VND"})</span>
           <span>{formatCurrency(total, currencyDisplay)}</span>
         </div>
+      </div>
+      <div className="border-t border-border px-8 py-4">
+        <PaymentQrSection variant="minimal" />
       </div>
       <div className="grid shrink-0 grid-cols-2 gap-6 border-t border-border px-8 py-6 text-sm text-muted-foreground">
         <div>

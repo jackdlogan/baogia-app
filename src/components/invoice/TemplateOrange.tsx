@@ -6,6 +6,7 @@ import { formatCurrency } from "@/lib/invoice-utils";
 import { DatePickerField } from "./DatePickerField";
 import { ItemField } from "./InvoiceFields";
 import { InlineEditable } from "./InlineEditable";
+import { PaymentQrSection } from "./PaymentQrSection";
 
 export function TemplateOrange() {
   const { data, getGrandTotal, removeItem, updateField, addItem } = useInvoice();
@@ -147,6 +148,9 @@ export function TemplateOrange() {
               className="text-sm text-white hover:bg-white/20"
             />
           </div>
+        </div>
+        <div className="mb-5">
+          <PaymentQrSection variant="orange" />
         </div>
         <div className="mb-5">
           <div className="border-b border-white/60 pb-1 text-sm font-bold">Tổng thanh toán</div>
