@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ứng dụng Báo giá (Next.js + Shadcn)
 
-## Getting Started
+Phiên bản Next.js của công cụ tạo báo giá, dùng Shadcn UI.
 
-First, run the development server:
+## Chạy
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Mở [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Tính năng
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **3 mẫu:** Orange Footer, Grey Panel, Classic (có thumbnail trong sidebar)
+- **Chỉnh sửa:** Tất cả trường dùng Input/Textarea Shadcn
+- **Xuất:** PDF, PNG, In (nút trong sidebar)
+- **Lưu tự động:** Dữ liệu lưu vào localStorage
 
-## Learn More
+## Công nghệ
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 16 (App Router)
+- TypeScript
+- Tailwind CSS
+- Shadcn UI (Button, Input, Card, Label, Separator, ScrollArea, Textarea)
+- html2pdf.js, html2canvas (export PDF/PNG)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Cấu trúc
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/app/` – layout, page
+- `src/components/invoice/` – Sidebar, InvoiceView, TemplateOrange, TemplateGrey, TemplateClassic, InvoiceFields
+- `src/context/invoice-context.tsx` – state + localStorage
+- `src/lib/` – invoice-types, invoice-utils
