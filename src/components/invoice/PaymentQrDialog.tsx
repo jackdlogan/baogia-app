@@ -64,14 +64,14 @@ export function PaymentQrDialog({ open, onOpenChange }: Props) {
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="min-w-0 max-w-[calc(100vw-2rem)] sm:max-w-lg">
         <DialogHeader>
           <DialogTitle>QR thanh toán VietQR</DialogTitle>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="grid gap-4 py-2">
-          <div className="grid gap-2" ref={bankDropdownRef}>
+        <form onSubmit={handleSubmit} className="grid min-w-0 gap-4 overflow-hidden py-2">
+          <div className="grid min-w-0 gap-2" ref={bankDropdownRef}>
             <Label htmlFor="sepay-bank">Ngân hàng thụ hưởng</Label>
-            <div className="relative">
+            <div className="relative min-w-0">
               <Button
                 id="sepay-bank"
                 type="button"
@@ -79,25 +79,27 @@ export function PaymentQrDialog({ open, onOpenChange }: Props) {
                 role="combobox"
                 aria-expanded={bankDropdownOpen}
                 aria-haspopup="listbox"
-                className="h-10 w-full justify-between font-normal"
+                className="h-10 w-full min-w-0 justify-between gap-2 font-normal"
                 onClick={() => setBankDropdownOpen((v) => !v)}
               >
                 {bank ? (
-                  <span className="flex items-center gap-2 truncate">
-                    <img
-                      src={getBankLogoUrl(SEPAY_BANKS.find((b) => b.short_name === bank)?.code ?? "")}
-                      alt=""
-                      className="size-6 shrink-0 rounded object-contain"
-                      onError={(e) => {
-                        e.currentTarget.style.display = "none";
-                      }}
-                    />
+                <span className="flex min-w-0 flex-1 items-center gap-2 overflow-hidden">
+                  <img
+                    src={getBankLogoUrl(SEPAY_BANKS.find((b) => b.short_name === bank)?.code ?? "")}
+                    alt=""
+                    className="size-6 shrink-0 rounded object-contain"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                  <span className="min-w-0 truncate text-left">
                     {SEPAY_BANKS.find((b) => b.short_name === bank)?.name ?? bank}
                   </span>
+                </span>
                 ) : (
-                  "-- Chọn ngân hàng --"
+                  <span className="text-left">-- Chọn ngân hàng --</span>
                 )}
-                <ChevronDown className={cn("ml-2 size-4 shrink-0 opacity-50 transition-transform", bankDropdownOpen && "rotate-180")} />
+                <ChevronDown className={cn("size-4 shrink-0 opacity-50 transition-transform", bankDropdownOpen && "rotate-180")} />
               </Button>
               {bankDropdownOpen && (
                 <div
